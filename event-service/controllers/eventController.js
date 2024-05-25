@@ -57,14 +57,14 @@ exports.updateEvent = async (req, res) => {
 
 exports.deleteEvent = async (req, res) => {
   try {
-    const event = await Event.findByIdAndRemove(req.params.id);
+    const event = await Event.findByIdAndRemove(req.params.id, { new: true });
 
     if (!event) {
       return res.status(404).json({ msg: "Event not found" });
     }
 
     // Publish event deletion message
-    publishEvent({ type: "EVENT_DELETED", data: { _id: req.params.id } });
+    publishEvent({ type: "EVENT_DELETED", data: event });
 
     res.json({ msg: "Event removed" });
   } catch (err) {

@@ -1,4 +1,4 @@
-const createChannel = require('../../shared/config/rabbitmq');
+const createChannel = require('../rabbitmq/rabbitmq');
 
 exports.publishEvent = (event) => {
   createChannel((channel, connection) => {

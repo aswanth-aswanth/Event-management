@@ -2,14 +2,13 @@ const nodemailer = require('nodemailer');
 const config = {
   email: {
     service: 'gmail',
-    user: 'aswanthndl@gmail.com',
-    password: 'yourpassword',
-    from: 'noreply@eventmanagementsystem.com',
-    to: 'recipient@example.com'
+    user: 'aswanth2t@gmail.com',
+    password: 'eozy ywpl dagy xpuo',
+    from: 'aswanth2t@gmail.com'
   }
 };
 
-const sendNotification = (message) => {
+const sendNotification = (recipients, subject, message) => {
   const transporter = nodemailer.createTransport({
     service: config.email.service,
     auth: {
@@ -20,8 +19,8 @@ const sendNotification = (message) => {
 
   const mailOptions = {
     from: config.email.from,
-    to: config.email.to,
-    subject: 'Notification from Event Management System',
+    to: recipients.join(','),  // Join the array of recipients into a comma-separated string
+    subject: subject,
     text: message
   };
 
