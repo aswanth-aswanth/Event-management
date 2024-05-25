@@ -1,0 +1,48 @@
+
+version: '3'
+services:
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  auth-service:
+    build:
+      context: ./auth-service
+    ports:
+      - "4000:4000"
+    depends_on:
+      - rabbitmq
+
+  user-service:
+    build:
+      context: ./user-service
+    ports:
+      - "4001:4001"
+    depends_on:
+      - rabbitmq
+
+  event-service:
+    build:
+      context: ./event-service
+    ports:
+      - "4002:4002"
+    depends_on:
+      - rabbitmq
+
+  ticket-service:
+    build:
+      context: ./ticket-service
+    ports:
+      - "4003:4003"
+    depends_on:
+      - rabbitmq
+
+  notification-service:
+    build:
+      context: ./notification-service
+    ports:
+      - "4004:4004"
+    depends_on:
+      - rabbitmq

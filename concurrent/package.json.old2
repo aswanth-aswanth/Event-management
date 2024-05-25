@@ -1,0 +1,11 @@
+{
+  "name": "concurrent",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"npm run start:auth\" ",
+    "start:auth": "cd ../auth-service && npm start"
+  },
+  "dependencies": {
+    "concurrently": "^7.0.0"
+  }
+}

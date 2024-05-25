@@ -1,0 +1,16 @@
+{
+  "name": "concurrent",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run start:auth\" \"npm run start:user\" \"npm run start:event\" \"npm run start:ticket\" \"npm run start:notification\"",
+    "start:auth": "cd ../auth-service && npm start",
+    "start:user": "cd ../user-service && npm start",
+    "start:event": "cd ../event-service && npm start",
+    "start:ticket": "cd ../ticket-service && npm start",
+    "start:notification": "cd ../notification-service && npm start"
+  },
+  "dependencies": {
+    "concurrently": "^7.0.0"
+  }
+}
